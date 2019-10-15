@@ -219,12 +219,3 @@ def requiresTLSv1_3():
     return pytest.mark.skipif(
         not getattr(ssl, "HAS_TLSv1_3", False), reason="Test requires TLSv1.3"
     )
-
-
-class _ListHandler(logging.Handler):
-    def __init__(self):
-        super(_ListHandler, self).__init__()
-        self.records = []
-
-    def emit(self, record):
-        self.records.append(record)
